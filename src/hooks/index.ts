@@ -1,18 +1,35 @@
-import { DynamicValue, ValueStatus } from "mendix";
+import { DynamicValue } from "mendix";
+import Big from "big.js";
 import { useMemo } from "react";
-import { getDynamicValue } from "../data";
+import {
+    getDynamicValue,
+    getDynamicValueBig,
+    getDynamicValueBoolean,
+    getDynamicValueBooleanWithLoading,
+    getDynamicValueString,
+    getDynamicValueWithLoading
+} from "../data";
 
-/**
- * Use dynamic value hook
- *
- * @name useDynamicValue
- * @category Hooks
- * @param value DynamicValue
- * @returns [isAvaliable, DynamicValue.value]
- */
-export const useDynamicValue = <T>(value?: DynamicValue<T>): [boolean, T | null] => {
-    const isAvailable = useMemo(() => (value ? value.status === ValueStatus.Available : true), [value]);
-    const dynamicValue = useMemo(() => getDynamicValue(null, value), []);
+export const useDynamicValue = <T>(value?: DynamicValue<T>): T | null => {
+    return useMemo(() => getDynamicValue(null, value), [value]);
+};
 
-    return [isAvailable, dynamicValue];
+export const useDynamicValueWithLoading = <T>(value?: DynamicValue<T>): [boolean, T | null] => {
+    return useMemo(() => getDynamicValueWithLoading(null, value), []);
+};
+
+export const useDynamicValueBoolean = (value?: DynamicValue<boolean>): boolean | null => {
+    return useMemo(() => getDynamicValueBoolean(value), [value]);
+};
+
+export const useDynamicValueBooleanWithLoading = (value?: DynamicValue<boolean>): [boolean, boolean | null] => {
+    return useMemo(() => getDynamicValueBooleanWithLoading(value), []);
+};
+
+export const useDynamicValueString = (value?: DynamicValue<string>): string | null => {
+    return useMemo(() => getDynamicValueString(value), [value]);
+};
+
+export const useDynamicValueBig = (value?: DynamicValue<Big>): number | null => {
+    return useMemo(() => getDynamicValueBig(value), [value]);
 };
