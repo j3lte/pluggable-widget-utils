@@ -7,5 +7,8 @@
     "githubPages": false,
     "compilerOptions": {
         "target": "es6",
-    }
+    },
+    "categoryOrder": [
+        "*"
+    ]
 }

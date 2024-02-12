@@ -3,11 +3,12 @@
 Building pluggable widgets can be tedious when you have to copy/paste certain patterns over again.
 
 Use at your own risk...
+
 ## License
 
 The MIT License (MIT)
 
-Copyright © CaffCode 2022. All Rights Reserved.
+Copyright © CaffCode 2022-2024. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
